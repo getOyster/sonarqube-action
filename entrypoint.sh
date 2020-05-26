@@ -22,6 +22,4 @@ sonar-scanner \
 	-Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR} \
 	-Dsonar.login=${INPUT_LOGIN} \
 	-Dsonar.sources=. \
-	-Dsonar.sourceEncoding=UTF-8 \
-	${SONAR_PASSWORD}
-
+	-Dsonar.sourceEncoding=UTF-8
