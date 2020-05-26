@@ -22,4 +22,3 @@ sonar-scanner \
 	-Dsonar.login=${INPUT_LOGIN} \
 	-Dsonar.sources=. \
 	-Dsonar.sourceEncoding=UTF-8
-	-Dsonar.qualitygate.wait=true
