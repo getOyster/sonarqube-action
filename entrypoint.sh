@@ -22,3 +22,5 @@ sonar-scanner \
 	-Dsonar.login=${INPUT_LOGIN} \
 	-Dsonar.sources=. \
 	-Dsonar.sourceEncoding=UTF-8
+
+cat server/coverage/lcov.info
