@@ -23,4 +23,4 @@ sonar-scanner \
 	-Dsonar.sources=. \
 	-Dsonar.sourceEncoding=UTF-8
 
-cat server/coverage/lcov.info
+cat cov.info
