@@ -49,7 +49,7 @@ fi
 
 HTTP_STATUS=$(curl -s -o /dev/null -w '%{http_code}' -u $SONAR_API_TOKEN: $SONAR_SERVER/api/ce/task\?id\=$CE_TASK_ID)
 if [  "$HTTP_STATUS" -ne 200 ]
-then1
+then
   echo "Sonar API Token has no access rights."
   exit 1
 fi
