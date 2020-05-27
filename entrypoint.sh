@@ -22,7 +22,7 @@ sonar-scanner \
 	-Dsonar.login=${INPUT_LOGIN} \
 	-Dsonar.sources=. \
 	-Dsonar.sourceEncoding=UTF-8
-apt install jq -y
+apk add jq
 cat report-task.txt
 SONAR_RESULT="report-task.txt"
 SONAR_SERVER="${INPUT_HOST}"
