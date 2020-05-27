@@ -71,7 +71,9 @@ do
 done
 
 STATUS=$(curl -XGET -s -u $SONAR_API_TOKEN: $SONAR_SERVER/api/qualitygates/project_status?analysisId=$ANALYSIS_ID | jq -r .projectStatus.status)
- 
+
+curl -XGET -s -u $SONAR_API_TOKEN: $SONAR_SERVER/api/qualitygates/project_status?analysisId=$ANALYSIS_ID
+
 if [ $STATUS = "ERROR" ]
 then
   echo "Qualitygate failed."
