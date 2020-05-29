@@ -72,10 +72,13 @@ do
 done
 
 STATUS=$(curl -XGET -s -u $SONAR_API_TOKEN: $SONAR_SERVER/api/qualitygates/project_status?analysisId=$ANALYSIS_ID | jq -r .projectStatus.status)
+ERROR_STATUS=$(curl -XGET -s -u $SONAR_API_TOKEN: $SONAR_SERVER/api/qualitygates/project_status?analysisId=$ANALYSIS_ID | jq -r '.projectStatus.conditions[] | select(.status=="ERROR")')
 
 ANALYSIS=$(curl -XGET -s -u $SONAR_API_TOKEN: $SONAR_SERVER/api/qualitygates/project_status?analysisId=$ANALYSIS_ID)
 echo ::set-output name=analysis::$ANALYSIS
 echo ::set-output name=status::$STATUS
+echo ::set-output name=error_status::$ERROR_STATUS
+
 if [ $STATUS = "ERROR" ]
 then
   echo "Qualitygate failed."
