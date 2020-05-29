@@ -75,6 +75,7 @@ STATUS=$(curl -XGET -s -u $SONAR_API_TOKEN: $SONAR_SERVER/api/qualitygates/proje
 
 ANALYSIS=$(curl -XGET -s -u $SONAR_API_TOKEN: $SONAR_SERVER/api/qualitygates/project_status?analysisId=$ANALYSIS_ID)
 echo ::set-output name=analysis::$ANALYSIS
+echo ::set-output name=status::$STATUS
 if [ $STATUS = "ERROR" ]
 then
   echo "Qualitygate failed."
