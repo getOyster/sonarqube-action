@@ -48,6 +48,13 @@ then
   exit 1
 fi
 
+DASHBOARD_URL=`sed -n 's/dashboardUrl=\(.*\)/\1/p' < $SONAR_RESULT` 
+if [ -z $DASHBOARD_URL ]
+then
+  echo "DASHBOARD_URL is not set from sonar build."
+  exit 1
+fi
+
 HTTP_STATUS=$(curl -s -o /dev/null -w '%{http_code}' -u $SONAR_API_TOKEN: $SONAR_SERVER/api/ce/task\?id\=$CE_TASK_ID)
 if [  "$HTTP_STATUS" -ne 200 ]
 then
@@ -78,7 +85,7 @@ ANALYSIS=$(curl -XGET -s -u $SONAR_API_TOKEN: $SONAR_SERVER/api/qualitygates/pro
 echo ::set-output name=analysis::$ANALYSIS
 echo ::set-output name=status::$STATUS
 echo ::set-output name=error_status::$ERROR_STATUS
-
+echo ::set-output name=dashboard_url::$DASHBOARD_URL
 if [ $STATUS = "ERROR" ]
 then
   echo "Qualitygate failed."
