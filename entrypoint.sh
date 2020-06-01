@@ -90,7 +90,7 @@ echo ::set-output name=dashboard_url::$DASHBOARD_URL
 if [ $STATUS = "ERROR" ]
 then
   echo "Qualitygate failed."
-  ERROR_DETAIL_MESSAGE="**Sonarqube Status Failed for Following Check** &nbsp; $ERROR_STATUS &nbsp; '***' &nbsp; **Review on Dashboard** &nbsp; $DASHBOARD_URL"
+  ERROR_DETAIL_MESSAGE="**Sonarqube Status Failed for Following Check**<br />$ERROR_STATUS<hr />**Review on Dashboard**<br />$DASHBOARD_URL"
   echo ::set-output name=error_detail_message::$ERROR_DETAIL_MESSAGE
   exit 0
 fi 
