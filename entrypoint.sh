@@ -22,7 +22,7 @@ sonar-scanner \
 	-Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR} \
 	-Dsonar.login=${INPUT_LOGIN} \
 	-Dsonar.sources=. \
-	-Dsonar.sourceEncoding=UTF-8
+	-Dsonar.sourceEncoding=UTF-8 | echo ::set-output name=status::ERROR
 apk add jq
 cat report-task.txt
 SONAR_RESULT="report-task.txt"
