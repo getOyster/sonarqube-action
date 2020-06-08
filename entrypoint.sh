@@ -24,11 +24,11 @@ sonar-scanner \
 	-Dsonar.sources=. \
 	-Dsonar.sourceEncoding=UTF-8 | echo ::set-output name=status::ERROR
 apk add jq
-cat report-task.txt
-SONAR_RESULT="report-task.txt"
+cat ${INPUT_PROJECTBASEDIR}/report-task.txt
+SONAR_RESULT="${INPUT_PROJECTBASEDIR}/report-task.txt"
 SONAR_SERVER="${INPUT_HOST}"
 SONAR_API_TOKEN="${INPUT_LOGIN}"
-if [ ! -f report-task.txt ]; then
+if [ ! -f ${INPUT_PROJECTBASEDIR}/report-task.txt ]; then
     echo "File not found!"
     exit 1
 fi
